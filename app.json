@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "stock-market-dashboard-app",
-    "slug": "stock-market-dashboard-app",
+    "slug": "stockmarketdashboard",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,20 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "91a89664-90c8-4738-99eb-b51dfc6d3576"
+      }
+    },
+    "owner": "saurabhkumarr99",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/91a89664-90c8-4738-99eb-b51dfc6d3576"
     }
   }
 }

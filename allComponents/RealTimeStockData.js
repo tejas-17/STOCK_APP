@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStockData } from '../reduxComponents/stockDataActions';
+import { addToFavorites, removeFromFavorites } from '../reduxComponents/favoritesActions';
 
 const RealTimeStockData = () => {
-    const [stockData, setStockData] = useState([]);
-    const [favorites, setFavorites] = useState([]);
+    const dispatch = useDispatch();
+    const stockData = useSelector((state) => state.stockData) || [];
+    const favorites = useSelector((state) => state.favorites) || [];
     const [buttonText, setButtonText] = useState({});
     const [pagination, setPagination] = useState({ current: 1, pageSize: 10 });
     const [searchText, setSearchText] = useState('');
     const [sortOrder, setSortOrder] = useState(null);
 
+    // Handle search input
+    const handleSearch = (value) => {
+        setSearchText(value);
+    };
+
+    // Handle sort functionality
+    const handleSort = (order) => {
+        setSortOrder(order);
+    };
+
+    // Effect to generate dummy stock data and update favorites button text
     useEffect(() => {
         const symbols = [
             'AAPL', 'AMZN', 'GOOGL', 'MSFT', 'FB', 'TSLA', 'NVDA', 'JNJ', 'JPM', 'V',
@@ -37,33 +52,29 @@ const RealTimeStockData = () => {
         };
 
         const dummyData = generateDummyData();
-        setStockData(dummyData);
+        dispatch(setStockData(dummyData));
 
-        const buttonTextObj = dummyData.reduce((acc, stock) => {
-            acc[stock.symbol] = favorites.includes(stock.symbol)
-                ? 'Remove from Favorites'
-                : 'Add to Favorites';
-            return acc;
-        }, {});
-        setButtonText(buttonTextObj);
-    }, [favorites]);
+        // Update button text based on favorites
+        setButtonText(
+            dummyData.reduce((acc, stock) => {
+                acc[stock.symbol] = favorites.includes(stock.symbol)
+                    ? 'Remove from Favorites'
+                    : 'Add to Favorites';
+                return acc;
+            }, {})
+        );
+    }, [favorites, dispatch]);
 
-    const handleSearch = (value) => {
-        setSearchText(value);
-    };
-
-    const handleSort = (order) => {
-        setSortOrder(order);
-    };
-
+    // Function to add/remove from favorites
     const handleAddToFavorites = (symbol) => {
         if (favorites.includes(symbol)) {
-            setFavorites(favorites.filter(fav => fav !== symbol));
+            dispatch(removeFromFavorites(symbol));
         } else {
-            setFavorites([...favorites, symbol]);
+            dispatch(addToFavorites(symbol));
         }
     };
 
+    // Sort function for stock data
     const sortStocks = (a, b) => {
         if (sortOrder === 'asc') {
             return a.latestPrice - b.latestPrice;
@@ -73,6 +84,7 @@ const RealTimeStockData = () => {
         return 0;
     };
 
+    // Filter and sort the stock data
     const filteredAndSortedStocks = stockData
         .sort(sortStocks)
         .filter(
@@ -81,16 +93,20 @@ const RealTimeStockData = () => {
                 stock.symbol.toLowerCase().includes(searchText.toLowerCase())
         );
 
+    // Function to get row background color
     const getRowClassName = (index) => {
         return index % 2 === 0 ? 'table-row-white' : 'table-row-black';
     };
 
+    // JSX for rendering the component
     return (
         <View>
+            {/* Header */}
             <View style={{ backgroundColor: '#1890ff', padding: 20 }}>
                 <Text style={{ color: 'white', textAlign: 'center' }}>Real-Time Stock Data</Text>
             </View>
 
+            {/* Search and sort options */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 20 }}>
                 {/* Search input */}
                 <TextInput
@@ -107,6 +123,7 @@ const RealTimeStockData = () => {
                 </View>
             </View>
 
+            {/* Display stock data */}
             <FlatList
                 data={filteredAndSortedStocks}
                 keyExtractor={(item) => item.symbol}
@@ -121,7 +138,6 @@ const RealTimeStockData = () => {
                     </View>
                 )}
             />
-
         </View>
     );
 };

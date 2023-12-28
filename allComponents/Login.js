@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
 import { Image, View, TextInput, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 function Login() {
   const { login } = useAuth();
   const [username, setUsername] = useState('Admin');
   const [password, setPassword] = useState('123');
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     if (username && password) {
       login();
-      // Navigate logic will be different in React Native, here's an example of how you might handle navigation:
-      // For example, using react-navigation library
-      // navigation.navigate('MarketPulse', { username });
+      navigation.navigate('Market Pulse');
     } else {
       alert('Please enter your username and password.');
     }

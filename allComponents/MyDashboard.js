@@ -10,9 +10,6 @@ const MyDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
 
-  console.log('Favorites:', favorites);
-  console.log('Stock Data:', stockData);
-
   const handleRemoveFromFavorites = (symbol) => {
     dispatch(removeFromFavorites(symbol));
   };
@@ -26,7 +23,6 @@ const MyDashboard = () => {
   const renderItem = ({ item, index }) => (
     <View style={{ flexDirection: 'row', padding: 10, backgroundColor: getRowClassName(index) }}>
       <Text>{(currentPage - 1) * pageSize + index + 1}</Text>
-      <Text>{ index + 1}</Text>
       <Text>{item.companyName}</Text>
       <Text>{item.symbol}</Text>
       <Text>{item.latestPrice}</Text>
