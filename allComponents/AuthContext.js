@@ -11,12 +11,10 @@ export function AuthProvider({ children }) {
 
   const login = () => {
     setIsAuthenticated(true);
-    // Add logic for authentication (e.g., fetch data from backend, verify credentials)
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    // Add logic for logout (e.g., clear session, reset states)
   };
 
   const value = {

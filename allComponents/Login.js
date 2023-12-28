@@ -12,7 +12,7 @@ function Login() {
   const handleLogin = () => {
     if (username && password) {
       login();
-      navigation.navigate('Market Pulse');
+      navigation.navigate('Home');
     } else {
       alert('Please enter your username and password.');
     }

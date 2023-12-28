@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, ImageBackground } from 'react-native';
 
-const Home = () => {
-  const theme = 'dark'; // Replace this with your theme logic or context usage
-
+const Home = ({ theme }) => {
   const keyFeatures = [
     'View different stock categories and sectors',
     'Create your personalized dashboard',
@@ -11,26 +9,37 @@ const Home = () => {
     'Customizable settings for a tailored experience',
   ];
 
+  const styles = {
+    light: {
+      textColor: '#000000',
+      headerColor: '#1890ff',
+      backgroundImage: require('../assets/Stockmarket.png'),
+    }
+  };
+
+  const selectedStyles = styles[theme] || styles.light;
+
   return (
-    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
-      <View style={{ backgroundColor: '#1890ff', paddingVertical: 20, alignItems: 'center' }}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Welcome to the Stock Market Dashboard!</Text>
+    <ImageBackground source={selectedStyles.backgroundImage} style={{ flex: 1, resizeMode: 'cover' }}>
+      <View style={{ backgroundColor: selectedStyles.headerColor, paddingVertical: 20, alignItems: 'center' }}>
+        <Text style={{ color: selectedStyles.textColor, fontSize: 20, fontWeight: 'bold' }}>Welcome to the Stock Market Dashboard!</Text>
       </View>
-      <ScrollView style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-        <Text style={{ fontSize: 16, marginBottom: 10 }}>
+      <View style={{ paddingHorizontal: 20, paddingTop: 20, alignItems: 'center' }}>
+        <Text style={{ color: selectedStyles.textColor, fontSize: 16 }}>
           The Stock Market Dashboard is an interactive platform designed to provide users with real-time stock market data and powerful analysis tools.
         </Text>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>Key Features:</Text>
-        {keyFeatures.map((feature, index) => (
-          <View key={index} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
-            <Text style={{ fontSize: 16, marginRight: 5 }}>{'\u2022'}</Text>
-            <Text style={{ fontSize: 16 }}>{feature}</Text>
-          </View>
-        ))}
-        <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>Explore Now:</Text>
-        <Text style={{ fontSize: 16 }}>Get started by exploring our features</Text>
-      </ScrollView>
-    </View>
+        <Text style={{ color: selectedStyles.textColor, fontSize: 18, fontWeight: 'bold' }}>Key Features:</Text>
+        <View style={{ marginTop: 10, borderWidth: 1, borderColor: selectedStyles.headerColor, borderRadius: 5 }}>
+          {keyFeatures.map((feature, index) => (
+            <View key={index} style={{ flexDirection: 'row', marginBottom: 5, paddingHorizontal: 10, paddingVertical: 5 }}>
+              <Text style={{ color: selectedStyles.textColor, fontSize: 16 }}>{feature}</Text>
+            </View>
+          ))}
+        </View>
+        <Text style={{ color: selectedStyles.textColor, fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>Explore Now:</Text>
+        <Text style={{ color: selectedStyles.textColor, fontSize: 16 }}>Get started by exploring our features</Text>
+      </View>
+    </ImageBackground>
   );
 };
 
