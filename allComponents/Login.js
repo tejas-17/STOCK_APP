@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect , useState } from 'react';
 import { useAuth } from './AuthContext';
 import { Image, View, TextInput, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 
 function Login() {
-  const { login } = useAuth();
+  const { login , isAuthenticated } = useAuth();
   const [username, setUsername] = useState('Admin');
   const [password, setPassword] = useState('123');
   const navigation = useNavigation();
+  
 
   const handleLogin = () => {
     if (username && password) {
       login();
-      navigation.navigate('Home');
+       navigation.navigate('ABC');
     } else {
       alert('Please enter your username and password.');
     }
   };
 
+
+  
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

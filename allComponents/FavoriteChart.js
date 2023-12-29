@@ -3,39 +3,46 @@ import { View, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { LineChart } from 'react-native-chart-kit';
 
-const StockDataChart = () => {
+const FavoriteChart = () => {
     const stockData = useSelector((state) => state.stockData) || [];
+    const favorites = useSelector((state) => state.favorites) || [];
 
-    // Extracting company names, latest prices, and highest prices from Redux stockData
-    const companyNames = stockData.map((item) => item.companyName);
-    const latestPrices = stockData.map((item) => item.latestPrice);
-    const highestPrices = stockData.map((item) => item.high);
+    const favoriteStocks = stockData.filter((stock) => favorites.includes(stock.symbol));
 
-    // Chart data
-    const chartData = {
-        labels: companyNames,
-        datasets: [
-            {
-                data: latestPrices,
-                color: (opacity = 1) => `rgba(75, 192, 192, ${opacity})`,
-                strokeWidth: 2,
-            },
-            {
-                data: highestPrices,
-                color: (opacity = 1) => `rgba(255, 99, 132, ${opacity})`,
-                strokeWidth: 2,
-            },
-        ],
-    };
+    // Extracting company names, latest prices, and highest prices from Redux favoriteStocks
+    const companyNames = favoriteStocks.map((item) => item.companyName);
+    const latestPrices = favoriteStocks.map((item) => item.latestPrice);
+    const highestPrices = favoriteStocks.map((item) => item.high);
+
+    // Creating a transposed dataset for rendering
+    const transposedData = companyNames.map((name, index) => ({
+        name,
+        currentPrice: latestPrices[index],
+        highestPrice: highestPrices[index],
+    }));
 
     return (
         <View>
             <View style={{ backgroundColor: '#1890ff', paddingVertical: 20, alignItems: 'center', marginBottom: 20 }}>
-                <Text style={{ color: 'white', fontSize: 20 }}>Line Chart : Company Prices</Text>
+                <Text style={{ color: 'white', fontSize: 20 }}>Line Chart : Favorite Stocks</Text>
             </View>
             <View style={{ margin: 20 }}>
                 <LineChart
-                    data={chartData}
+                    data={{
+                        labels: transposedData.map((data) => data.name),
+                        datasets: [
+                            {
+                                data: transposedData.map((data) => data.currentPrice),
+                                color: (opacity = 1) => `rgba(75, 192, 192, ${opacity})`,
+                                strokeWidth: 2,
+                            },
+                            {
+                                data: transposedData.map((data) => data.highestPrice),
+                                color: (opacity = 1) => `rgba(255, 99, 132, ${opacity})`,
+                                strokeWidth: 2,
+                            },
+                        ],
+                    }}
                     width={350}
                     height={300}
                     yAxisLabel="₹"
@@ -65,7 +72,8 @@ const StockDataChart = () => {
                 </View>
             </View>
         </View>
+        
     );
 };
 
-export default StockDataChart;
+export default FavoriteChart;
