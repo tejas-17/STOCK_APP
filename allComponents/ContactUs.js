@@ -11,14 +11,10 @@ const ContactUs = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <View style={{ alignItems: 'center' }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', marginVertical: 10 }}>
-          Contact us
-        </Text>
-        <Text style={{ textAlign: 'center' }}>
-          Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
-        </Text>
+    <View style={{ flex: 1, padding: 20, }}>
+      <View style={{ backgroundColor: '#1890ff', padding: 20 ,alignItems: 'center'}}>
+        <Text style={{color: 'black', fontSize: 20, fontWeight: 'bold'}}>Contact us</Text>
+        <Text style={{color: 'black', fontSize: 20, }}> Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.</Text>
       </View>
       <View style={{ marginVertical: 20 }}>
         <TextInput

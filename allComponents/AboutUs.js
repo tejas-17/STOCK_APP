@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        {/* Header content */}
+        <Text style={styles.name}> Some text about who we are and what we do. Resize the browser window to see that this page is responsive by the way.</Text>
       </View>
 
       <Text style={styles.teamHeader}>Our Team</Text>
@@ -16,7 +16,7 @@ const AboutUs = () => {
           <View style={styles.card}>
             <Image
               source={require('../assets/jane.jpg')}
-              style={styles.image}
+              style={{ width: 287, height: 200 }}
             />
             <View style={styles.cardContent}>
               <Text style={styles.name}>Jane Doe</Text>
@@ -30,7 +30,7 @@ const AboutUs = () => {
           <View style={styles.card}>
             <Image
               source={require('../assets/mike.jpg')}
-              style={styles.image}
+              style={{ width: 287, height: 200 }}
             />
             <View style={styles.cardContent}>
               <Text style={styles.name}>Mike Ross</Text>
@@ -44,7 +44,7 @@ const AboutUs = () => {
           <View style={styles.card}>
             <Image
               source={require('../assets/john.jpg')}
-              style={styles.image}
+              style={{ width: 287, height: 200 }}
             />
             <View style={styles.cardContent}>
               <Text style={styles.name}>John Doe</Text>
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
   card: {
     width: '80%', // Adjust the width as per your preference
     marginBottom: 20,
+    borderWidth: 2,
+     borderColor: 'black',
+     borderRadius: 10,
   },
   image: {
     width: '100%',
