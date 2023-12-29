@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromFavorites } from '../reduxComponents/favoritesActions'; // Import the action creator
+import { removeFromFavorites } from '../reduxComponents/favoritesActions';
 
 const MyDashboard = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,11 @@ const MyDashboard = () => {
       <Text>{item.latestPrice}</Text>
       <Text>{item.high}</Text>
       <Text>{item.currency}</Text>
-      <Button title="Remove from Favorites" onPress={() => handleRemoveFromFavorites(item.symbol)} />
+      <Button
+        title="Remove from Favorites"
+        onPress={() => handleRemoveFromFavorites(item.symbol)}
+        color="orange"
+      />
     </View>
   );
 
