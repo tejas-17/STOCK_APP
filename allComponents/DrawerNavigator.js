@@ -161,7 +161,7 @@ const DrawerNavigator = () => {
       )}
 
       <Drawer.Screen
-        name="ABC"
+        name="Stock Market Pulse"
         component={RealTimeStockData} // Replace with your desired component
         options={{ drawerLabel: () => null }} // Hide the label in the drawer
       />

@@ -14,7 +14,7 @@ function Login() {
   const handleLogin = () => {
     if (username && password) {
       login();
-       navigation.navigate('ABC');
+       navigation.navigate('Stock Market Pulse');
     } else {
       alert('Please enter your username and password.');
     }

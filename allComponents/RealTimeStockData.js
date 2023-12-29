@@ -98,11 +98,13 @@ const RealTimeStockData = () => {
 
     return (
         <View style={styles.container}>
-
             <View style={styles.header}>
+                <Text style={styles.headerText}>My Dashboard</Text>
+            </View>
+            <View style={styles.postheader}>
 
                 <View style={styles.row}>
-                    <Text style={styles.headerText}>Search Stock</Text>
+                    <Text style={styles.postheaderText}>Search Stock</Text>
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search..."
@@ -146,6 +148,16 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     header: {
+        backgroundColor: '#1890ff',
+        padding: 20,
+        marginBottom: 10,
+    },
+    headerText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20,
+    },
+    postheader: {
         flexDirection: 'column',
         marginBottom: 10,
     },
@@ -167,7 +179,7 @@ const styles = StyleSheet.create({
     sortButtons: {
         flexDirection: 'row',
     },
-    headerText: {
+    postheaderText: {
         fontSize: 20,
     },
     searchInput: {
