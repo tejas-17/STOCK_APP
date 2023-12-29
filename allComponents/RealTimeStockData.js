@@ -41,6 +41,50 @@ const RealTimeStockData = () => {
     const pageSize = 10;
 
 
+    // useEffect(() => {
+    //     const API_KEY = 'sk_466b1325bcd045ea83cd96c4e0cb94de';
+    //     const symbols = [
+    //         'AAPL', 'AMZN', 'GOOGL', 'MSFT', 'FB', 'TSLA', 'NVDA', 'JNJ', 'JPM', 'V',
+    //         'WMT', 'DIS', 'PFE', 'NFLX', 'KO', 'BAC', 'ADBE', 'PYPL', 'MCD', 'HD',
+    //     ];
+
+    //     const fetchStockData = async () => {
+    //         try {
+    //             const requests = symbols.map(symbol =>
+    //                 axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/quote?token=${API_KEY}`)
+    //             );
+
+    //             const responses = await Promise.all(requests);
+    //             // const data = responses.map(response => response.data);
+    //             const data = responses.map(response => ({
+    //                 companyName: response.data.companyName,
+    //                 symbol: response.data.symbol,
+    //                 latestPrice: response.data.latestPrice,
+    //                 high: response.data.week52High,
+    //                 currency: response.data.currency,
+    //                 latestTime:response.data.latestTime
+    //             }));
+
+    //             // Update stockData in Redux
+    //             dispatch(setStockData(data)); 
+
+    //             setButtonText(
+    //                 data.reduce((acc, stock) => {
+    //                     acc[stock.symbol] = favorites.includes(stock.symbol)
+    //                         ? 'Remove from Favorites'
+    //                         : 'Add to Favorites';
+    //                     return acc;
+    //                 }, {})
+    //             );
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchStockData();
+    // }, [favorites, dispatch]);
+
+
     useEffect(() => {
         const initialStockData = generateInitialStockData();
         dispatch(setStockData(initialStockData));
