@@ -4,6 +4,8 @@
 
 Welcome to the Stock Market Dashboard! This application provides users with real-time stock market data, analysis tools, and personalized features to track and manage stock investments. This README serves as a guide to understanding the Stock Market Dashboard app and its functionalities.
 
+## Languge : React Native
+
 ## Project Links
 
 - GitHub: [Stock Market Dashboard -Web Version](https://github.com/saurabhkumarr99/Stock-Market-Dashboard-Web)
