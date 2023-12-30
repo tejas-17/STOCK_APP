@@ -2,25 +2,21 @@
 
 ## Description
 
-Welcome to the Stock Market Dashboard! This application provides users with real-time stock market data, analysis tools, and personalized features to track and manage stock investments. This README serves as a guide to understanding the Stock Market Dashboard app and its functionalities.
+Welcome to our cutting-edge Stock Market App, where financial empowerment meets technological innovation. Stay ahead of the market curve with real-time updates, interactive charts, and personalized insights. Dive into a world of seamless trading, robust portfolio management, and a user-friendly interface designed to elevate your investing experience.
+
+
 
 ## Languge : React Native
 
 ## Project Links
 
-- GitHub: [Stock Market Dashboard -Web Version](https://github.com/saurabhkumarr99/Stock-Market-Dashboard-Web)
+- GitHub: [Stock Market Dashboard -Web Version](https://github.com/tejas-17/STOCK_DASHBOARD.git)
 
-- GitHub: [Stock Market Dashboard -App Version](https://github.com/saurabhkumarr99/Stock-Market-Dashboard-App)
+- GitHub: [Stock Market Dashboard -App Version](https://github.com/tejas-17/STOCK_APP.git)
 
-- Live: [Stock Market Dashboard -Web Version](https://saurabhkumarr99.github.io/Host-Stock-Market-Web/)
 
-- Live Expo Go Link: [Stock Market Dashboard -App Version](exp://u.expo.dev/update/12b2b67f-f49c-4b62-bd0e-ad5407f22dd1)
 
-- Live Expo Go QR code: Scan the following QR code with an Android device to open it in Expo Go.
 
-<p align="center">
-  <img src="./assets/StockMarketQR.png" alt="Screenshot 1" width="300" />
-</p>
 
 ## Table of Contents
 
@@ -28,7 +24,6 @@ Welcome to the Stock Market Dashboard! This application provides users with real
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Components Structure](#components-structure)
-- [Screenshots](#screenshots)
 - [Author](#author)
 
 ## Features
@@ -83,24 +78,6 @@ The project follows a structured directory layout for better organization:
 - **reduxComponents/**
 - **App.js**
 - **README.md**
-
-## Screenshots
-
-<p align="center">
-   <img src="./assets/1.a-Reg.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/1.b-Reg.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/1.c-Reg.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/2.a-PreLogin.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/2.b-PostLogin.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/3-Contact.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/4-About.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/5-Login.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/6.a-AllStock.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/6.b-FavStock.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/7-Search.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/8.a-AllChart.jpg" alt="Screenshot 1" width="300" />
-   <img src="./assets/8.b-FavChart.jpg" alt="Screenshot 1" width="300" />   
-</p>
 
 
 ## Author
