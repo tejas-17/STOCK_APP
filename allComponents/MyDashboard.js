@@ -27,16 +27,15 @@ const MyDashboard = () => {
       <Button
         title="Remove from Favorites"
         onPress={() => handleRemoveFromFavorites(item.symbol)}
-        color="orange"
+        color="#FF4500" // Orange color
       />
     </View>
   );
 
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>My Dashboard</Text>
+        <Text style={styles.headerText}>Stock Market Dashboard</Text>
       </View>
       <FlatList
         data={paginatedStocks}
@@ -64,11 +63,11 @@ const MyDashboard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5', // Light gray background
     padding: 20,
   },
   header: {
-    backgroundColor: '#1890ff',
+    backgroundColor: '#007bff', // Primary color
     padding: 20,
     marginBottom: 10,
   },
@@ -81,13 +80,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#007bff', // Primary color
   },
   stockItem: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#ddd',
     borderRadius: 10,
     padding: 15,
     marginBottom: 15,
+    backgroundColor: 'white',
   },
   pagination: {
     flexDirection: 'row',
