@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Card, Button } from 'react-native-paper';
 
 const AboutUs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.name}> Some text about who we are and what we do. Resize the browser window to see that this page is responsive by the way.</Text>
+        <Text style={styles.name}>This is a mobile app for stock monitoring.</Text>
       </View>
 
       <Text style={styles.teamHeader}>Our Team</Text>
@@ -14,43 +14,31 @@ const AboutUs = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.cardContainer}>
           <View style={styles.card}>
-            <Image
-              source={require('../assets/jane.jpg')}
-              style={{ width: 287, height: 200 }}
-            />
             <View style={styles.cardContent}>
-              <Text style={styles.name}>Jane Doe</Text>
-              <Text style={styles.role}>CEO & Founder</Text>
-              <Text>Some text that describes me lorem ipsum ipsum lorem.</Text>
-              <Text>jane@example.com</Text>
+              <Text style={styles.name}>Team Member 1</Text>
+              <Text style={styles.role}>Role 1</Text>
+              <Text>Description of the role and responsibilities.</Text>
+              <Text>team.member1@example.com</Text>
               <Button mode="contained" style={styles.button}>Contact</Button>
             </View>
           </View>
 
           <View style={styles.card}>
-            <Image
-              source={require('../assets/mike.jpg')}
-              style={{ width: 287, height: 200 }}
-            />
             <View style={styles.cardContent}>
-              <Text style={styles.name}>Mike Ross</Text>
-              <Text style={styles.role}>Art Director</Text>
-              <Text>Some text that describes me lorem ipsum ipsum lorem.</Text>
-              <Text>jane@example.com</Text>
+              <Text style={styles.name}>Team Member 2</Text>
+              <Text style={styles.role}>Role 2</Text>
+              <Text>Description of the role and responsibilities.</Text>
+              <Text>team.member2@example.com</Text>
               <Button mode="contained" style={styles.button}>Contact</Button>
             </View>
           </View>
 
           <View style={styles.card}>
-            <Image
-              source={require('../assets/john.jpg')}
-              style={{ width: 287, height: 200 }}
-            />
             <View style={styles.cardContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.role}>Designe</Text>
-              <Text>Some text that describes me lorem ipsum ipsum lorem.</Text>
-              <Text>jane@example.com</Text>
+              <Text style={styles.name}>Team Member 3</Text>
+              <Text style={styles.role}>Role 3</Text>
+              <Text>Description of the role and responsibilities.</Text>
+              <Text>team.member3@example.com</Text>
               <Button mode="contained" style={styles.button}>Contact</Button>
             </View>
           </View>
@@ -88,13 +76,8 @@ const styles = StyleSheet.create({
     width: '80%', // Adjust the width as per your preference
     marginBottom: 20,
     borderWidth: 2,
-     borderColor: 'black',
-     borderRadius: 10,
-  },
-  image: {
-    width: '100%',
-    height: 150,
-    resizeMode: 'cover',
+    borderColor: 'black',
+    borderRadius: 10,
   },
   cardContent: {
     padding: 10,
@@ -108,6 +91,9 @@ const styles = StyleSheet.create({
   role: {
     textAlign: 'center',
     fontWeight: '500'
+  },
+  button: {
+    marginTop: 10,
   },
 });
 

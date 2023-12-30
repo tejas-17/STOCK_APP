@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TextInput, Button, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 const Register = () => {
@@ -79,11 +79,8 @@ const Register = () => {
         </View>
         <View style={{ alignItems: 'center', marginTop: 50 }}>
           <View style={{ width: '80%', padding: 20, borderWidth: 1, borderColor: '#ccc', borderRadius: 5 }}>
-            <View style={{ alignItems: 'center', marginBottom: 20 }}>
-              <Image
-                source={require('../assets/RegImg.png')}
-                style={{ width: '100%', height: 200, borderTopLeftRadius: 5, borderTopRightRadius: 5 }}
-              />
+            <View style={{ marginBottom: 20 }}>
+              {/* Removed the Image component and placeholder */}
             </View>
             <View>
               <TextInput
