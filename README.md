@@ -82,5 +82,5 @@ The project follows a structured directory layout for better organization:
 
 ## Author
 
-- SAURABH KUMAR RAI
+- TEJAS NIMBRE
 
