@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 const Register = () => {
@@ -72,65 +72,122 @@ const Register = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View>
-        <View style={{ backgroundColor: '#1890ff', padding: 20 }}>
-          <Text style={{ color: 'white', textAlign: 'center' }}>Register yourself</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Register Yourself</Text>
+      </View>
+      <View style={styles.formContainer}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Username"
+            value={formData.username}
+            onChangeText={(text) => handleInputChange('username', text)}
+            style={styles.input}
+          />
+          {errors.username && <Text style={styles.errorText}>{errors.username}</Text>}
+          <TextInput
+            placeholder="Email"
+            value={formData.email}
+            onChangeText={(text) => handleInputChange('email', text)}
+            style={styles.input}
+          />
+          {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+          <TextInput
+            placeholder="Password"
+            value={formData.password}
+            onChangeText={(text) => handleInputChange('password', text)}
+            secureTextEntry={true}
+            style={styles.input}
+          />
+          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+          <TextInput
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChangeText={(text) => handleInputChange('confirmPassword', text)}
+            secureTextEntry={true}
+            style={styles.input}
+          />
+          {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
+          <TouchableOpacity
+            onPress={() => handleInputChange('agreement', !formData.agreement)}
+            style={styles.checkboxContainer}
+          >
+            <Text style={styles.checkboxText}>I have read the agreement</Text>
+            <Text style={styles.checkbox}>{formData.agreement ? '✔️' : '❌'}</Text>
+          </TouchableOpacity>
+          {errors.agreement && <Text style={styles.errorText}>{errors.agreement}</Text>}
         </View>
-        <View style={{ alignItems: 'center', marginTop: 50 }}>
-          <View style={{ width: '80%', padding: 20, borderWidth: 1, borderColor: '#ccc', borderRadius: 5 }}>
-            <View style={{ marginBottom: 20 }}>
-              {/* Removed the Image component and placeholder */}
-            </View>
-            <View>
-              <TextInput
-                placeholder="Username"
-                value={formData.username}
-                onChangeText={(text) => handleInputChange('username', text)}
-                style={{ borderWidth: 1, borderColor: '#ccc', borderRadius: 5, padding: 10, marginBottom: 10 }}
-              />
-              {errors.username && <Text style={{ color: 'red' }}>{errors.username}</Text>}
-              <TextInput
-                placeholder="Email"
-                value={formData.email}
-                onChangeText={(text) => handleInputChange('email', text)}
-                style={{ borderWidth: 1, borderColor: '#ccc', borderRadius: 5, padding: 10, marginBottom: 10 }}
-              />
-              {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
-              <TextInput
-                placeholder="Password"
-                value={formData.password}
-                onChangeText={(text) => handleInputChange('password', text)}
-                secureTextEntry={true}
-                style={{ borderWidth: 1, borderColor: '#ccc', borderRadius: 5, padding: 10, marginBottom: 10 }}
-              />
-              {errors.password && <Text style={{ color: 'red' }}>{errors.password}</Text>}
-              <TextInput
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
-                onChangeText={(text) => handleInputChange('confirmPassword', text)}
-                secureTextEntry={true}
-                style={{ borderWidth: 1, borderColor: '#ccc', borderRadius: 5, padding: 10, marginBottom: 10 }}
-              />
-              {errors.confirmPassword && <Text style={{ color: 'red' }}>{errors.confirmPassword}</Text>}
-              <TouchableOpacity
-                onPress={() => handleInputChange('agreement', !formData.agreement)}
-                style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}
-              >
-                <Text style={{ marginRight: 10 }}>I have read the agreement</Text>
-                <Text>{formData.agreement ? '✔️' : '❌'}</Text>
-              </TouchableOpacity>
-              {errors.agreement && <Text style={{ color: 'red' }}>{errors.agreement}</Text>}
-              <View style={{ alignItems: 'center' }}>
-                <Button title="Register" onPress={handleSubmit} />
-              </View>
-            </View>
-          </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.registerButton} onPress={handleSubmit}>
+            <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+  },
+  header: {
+    backgroundColor: 'maroon',
+    padding: 20,
+    alignItems: 'center',
+  },
+  headerText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  formContainer: {
+    alignItems: 'center',
+    marginTop: 50,
+  },
+  inputContainer: {
+    width: '80%',
+    padding: 20,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  errorText: {
+    color: 'maroon',
+    marginBottom: 10,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  checkboxText: {
+    marginRight: 10,
+  },
+  checkbox: {
+    fontSize: 20,
+  },
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  registerButton: {
+    backgroundColor: 'maroon',
+    padding: 15,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+});
 
 export default Register;
